@@ -3,8 +3,8 @@
 #
 #	FICHERO:	AnLexico.py
 #
-#	Codigo de programa que realiza la parte Lexica para el compilador
-#
+#	Código de programa que realiza la parte Léxica para el compilador
+#	
 # -------------------------------------------------------------------- 
 
 
@@ -121,9 +121,8 @@ def t_newline (t):
 
 # Ignora comentarios de tipo //
 def t_COMMENT(t):
-    r'\//.*'
-    pass
-
+	r'\//.*'
+	pass
 
 # Codigo de error
 def t_error(t):
