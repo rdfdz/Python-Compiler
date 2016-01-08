@@ -48,7 +48,6 @@ tokens = [
 	'PARR',
 	'YLOGIC',
 	'OLOGIC',
-	'EXCLA',
 	'STRINGS',
 	'BLOCKL',
 	'BLOCKR',
@@ -62,13 +61,13 @@ tokens = [
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
-t_DIVIDE = 	r'/'
+t_DIVIDE = r'/'
 t_MOD = r'\%'
 
 #Operadores Relacionales
 t_GREATERTHAN = r'>='
 t_LESSTHAN = r'<='
-t_ASSIGNATION = r'=='
+t_EQUALS = r'=='
 t_NOASSIG = r'!='
 t_LESS = r'<'
 t_GREATER = r'>'
@@ -76,7 +75,6 @@ t_GREATER = r'>'
 #Operadores Lógicos
 t_YLOGIC = r'&&'
 t_OLOGIC = r'\|\|'
-t_EXCLA = r'\!'
 
 # Implementaciones Obligatorias
 t_COMA = r','
@@ -85,7 +83,7 @@ t_BLOCKR = r'}'
 t_BLOCKL = r'{'
 t_PARL = r'\('
 t_PARR = r'\)'
-t_EQUALS = r'='
+t_ASSIGNATION = r'='
 
 # Asignación con o lógico (Grupo 51)
 t_AOLOGIC = r'\|='
@@ -110,9 +108,9 @@ def t_ID (t):
 
 # Funcion para Numeros
 def t_NUMBER (t):
-	r'[0-9.]+'			
+	r'\d+'			
 	t.value = eval(t.value)
-   	return t
+	return t
 
 # Salto de Lineas
 def t_newline (t):
@@ -123,6 +121,7 @@ def t_newline (t):
 def t_COMMENT(t):
 	r'\//.*'
 	pass
+
 
 # Codigo de error
 def t_error(t):

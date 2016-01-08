@@ -16,15 +16,15 @@ class Error():
 	def create_log(self): 
 		
 		if platform.platform().startswith('Windows'):
-	 		fichero_log = os.path.join(os.getenv('HOMEDRIVE'), os.getenv("HOMEPATH"),'error.log')
+			fichero_log = os.path.join(os.getenv('HOMEDRIVE'), os.getenv("HOMEPATH"),'error.log')
 		else:
-	 		fichero_log = os.path.join('error.log')
-	 	
+			fichero_log = os.path.join('error.log')
+
 		logging.basicConfig(
-	 		level = logging.DEBUG,
-	 		format = '%(asctime)s : %(levelname)s : %(message)s',
-	 		filename = fichero_log,
-	 		filemode = 'a+',)
+			level = logging.DEBUG,
+			format = '%(asctime)s : %(levelname)s : %(message)s',
+			filename = fichero_log,
+			filemode = 'a+',)
 
 		coloredlogs.install(level='debug')
 

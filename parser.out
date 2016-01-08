@@ -1,0 +1,829 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    OLOGIC
+    LESS
+    FOR_PALRES
+    LESSTHAN
+    BLOCKR
+    IF_PALRES
+    FUNCTION_PALRES
+    NOASSIG
+    EQUALS
+    GREATERTHAN
+    BLOCKL
+    RETURN_PALRES
+    GREATER
+    YLOGIC
+
+Grammar
+
+Rule 0     S' -> sentencias
+Rule 1     sentencias -> sentencias declaraciones
+Rule 2     sentencias -> sentencias SEMICOLON declaraciones
+Rule 3     sentencias -> declaraciones
+Rule 4     declaraciones -> VAR_PALRES constantes
+Rule 5     declaraciones -> WRITE_PALRES PARL expresiones PARR
+Rule 6     declaraciones -> PROMPT_PALRES PARL ID PARR
+Rule 7     declaraciones -> ID ASSIGNATION expresiones
+Rule 8     declaraciones -> ID AOLOGIC ID
+Rule 9     constantes -> CHARS_PALRES ids
+Rule 10    constantes -> CHARS_PALRES ID ASSIGNATION STRINGS
+Rule 11    constantes -> INT_PALRES ids
+Rule 12    constantes -> INT_PALRES ID ASSIGNATION NUMBER
+Rule 13    constantes -> BOOL_PALRES ids
+Rule 14    ids -> ID COMA ids
+Rule 15    ids -> ID
+Rule 16    expresiones -> expresiones PLUS expresiones
+Rule 17    expresiones -> expresiones MINUS expresiones
+Rule 18    expresiones -> expresiones TIMES expresiones
+Rule 19    expresiones -> expresiones DIVIDE expresiones
+Rule 20    expresiones -> expresiones MOD expresiones
+Rule 21    expresiones -> STRINGS
+Rule 22    expresiones -> NUMBER
+Rule 23    expresiones -> ID
+
+Terminals, with rules where they appear
+
+AOLOGIC              : 8
+ASSIGNATION          : 7 10 12
+BLOCKL               : 
+BLOCKR               : 
+BOOL_PALRES          : 13
+CHARS_PALRES         : 9 10
+COMA                 : 14
+DIVIDE               : 19
+EQUALS               : 
+FOR_PALRES           : 
+FUNCTION_PALRES      : 
+GREATER              : 
+GREATERTHAN          : 
+ID                   : 6 7 8 8 10 12 14 15 23
+IF_PALRES            : 
+INT_PALRES           : 11 12
+LESS                 : 
+LESSTHAN             : 
+MINUS                : 17
+MOD                  : 20
+NOASSIG              : 
+NUMBER               : 12 22
+OLOGIC               : 
+PARL                 : 5 6
+PARR                 : 5 6
+PLUS                 : 16
+PROMPT_PALRES        : 6
+RETURN_PALRES        : 
+SEMICOLON            : 2
+STRINGS              : 10 21
+TIMES                : 18
+VAR_PALRES           : 4
+WRITE_PALRES         : 5
+YLOGIC               : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+constantes           : 4
+declaraciones        : 1 2 3
+expresiones          : 5 7 16 16 17 17 18 18 19 19 20 20
+ids                  : 9 11 13 14
+sentencias           : 1 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentencias
+    (1) sentencias -> . sentencias declaraciones
+    (2) sentencias -> . sentencias SEMICOLON declaraciones
+    (3) sentencias -> . declaraciones
+    (4) declaraciones -> . VAR_PALRES constantes
+    (5) declaraciones -> . WRITE_PALRES PARL expresiones PARR
+    (6) declaraciones -> . PROMPT_PALRES PARL ID PARR
+    (7) declaraciones -> . ID ASSIGNATION expresiones
+    (8) declaraciones -> . ID AOLOGIC ID
+
+    VAR_PALRES      shift and go to state 5
+    WRITE_PALRES    shift and go to state 3
+    PROMPT_PALRES   shift and go to state 2
+    ID              shift and go to state 6
+
+    declaraciones                  shift and go to state 4
+    sentencias                     shift and go to state 1
+
+state 1
+
+    (0) S' -> sentencias .
+    (1) sentencias -> sentencias . declaraciones
+    (2) sentencias -> sentencias . SEMICOLON declaraciones
+    (4) declaraciones -> . VAR_PALRES constantes
+    (5) declaraciones -> . WRITE_PALRES PARL expresiones PARR
+    (6) declaraciones -> . PROMPT_PALRES PARL ID PARR
+    (7) declaraciones -> . ID ASSIGNATION expresiones
+    (8) declaraciones -> . ID AOLOGIC ID
+
+    SEMICOLON       shift and go to state 7
+    VAR_PALRES      shift and go to state 5
+    WRITE_PALRES    shift and go to state 3
+    PROMPT_PALRES   shift and go to state 2
+    ID              shift and go to state 6
+
+    declaraciones                  shift and go to state 8
+
+state 2
+
+    (6) declaraciones -> PROMPT_PALRES . PARL ID PARR
+
+    PARL            shift and go to state 9
+
+
+state 3
+
+    (5) declaraciones -> WRITE_PALRES . PARL expresiones PARR
+
+    PARL            shift and go to state 10
+
+
+state 4
+
+    (3) sentencias -> declaraciones .
+
+    SEMICOLON       reduce using rule 3 (sentencias -> declaraciones .)
+    VAR_PALRES      reduce using rule 3 (sentencias -> declaraciones .)
+    WRITE_PALRES    reduce using rule 3 (sentencias -> declaraciones .)
+    PROMPT_PALRES   reduce using rule 3 (sentencias -> declaraciones .)
+    ID              reduce using rule 3 (sentencias -> declaraciones .)
+    $end            reduce using rule 3 (sentencias -> declaraciones .)
+
+
+state 5
+
+    (4) declaraciones -> VAR_PALRES . constantes
+    (9) constantes -> . CHARS_PALRES ids
+    (10) constantes -> . CHARS_PALRES ID ASSIGNATION STRINGS
+    (11) constantes -> . INT_PALRES ids
+    (12) constantes -> . INT_PALRES ID ASSIGNATION NUMBER
+    (13) constantes -> . BOOL_PALRES ids
+
+    CHARS_PALRES    shift and go to state 12
+    INT_PALRES      shift and go to state 11
+    BOOL_PALRES     shift and go to state 14
+
+    constantes                     shift and go to state 13
+
+state 6
+
+    (7) declaraciones -> ID . ASSIGNATION expresiones
+    (8) declaraciones -> ID . AOLOGIC ID
+
+    ASSIGNATION     shift and go to state 16
+    AOLOGIC         shift and go to state 15
+
+
+state 7
+
+    (2) sentencias -> sentencias SEMICOLON . declaraciones
+    (4) declaraciones -> . VAR_PALRES constantes
+    (5) declaraciones -> . WRITE_PALRES PARL expresiones PARR
+    (6) declaraciones -> . PROMPT_PALRES PARL ID PARR
+    (7) declaraciones -> . ID ASSIGNATION expresiones
+    (8) declaraciones -> . ID AOLOGIC ID
+
+    VAR_PALRES      shift and go to state 5
+    WRITE_PALRES    shift and go to state 3
+    PROMPT_PALRES   shift and go to state 2
+    ID              shift and go to state 6
+
+    declaraciones                  shift and go to state 17
+
+state 8
+
+    (1) sentencias -> sentencias declaraciones .
+
+    SEMICOLON       reduce using rule 1 (sentencias -> sentencias declaraciones .)
+    VAR_PALRES      reduce using rule 1 (sentencias -> sentencias declaraciones .)
+    WRITE_PALRES    reduce using rule 1 (sentencias -> sentencias declaraciones .)
+    PROMPT_PALRES   reduce using rule 1 (sentencias -> sentencias declaraciones .)
+    ID              reduce using rule 1 (sentencias -> sentencias declaraciones .)
+    $end            reduce using rule 1 (sentencias -> sentencias declaraciones .)
+
+
+state 9
+
+    (6) declaraciones -> PROMPT_PALRES PARL . ID PARR
+
+    ID              shift and go to state 18
+
+
+state 10
+
+    (5) declaraciones -> WRITE_PALRES PARL . expresiones PARR
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 19
+
+state 11
+
+    (11) constantes -> INT_PALRES . ids
+    (12) constantes -> INT_PALRES . ID ASSIGNATION NUMBER
+    (14) ids -> . ID COMA ids
+    (15) ids -> . ID
+
+    ID              shift and go to state 24
+
+    ids                            shift and go to state 23
+
+state 12
+
+    (9) constantes -> CHARS_PALRES . ids
+    (10) constantes -> CHARS_PALRES . ID ASSIGNATION STRINGS
+    (14) ids -> . ID COMA ids
+    (15) ids -> . ID
+
+    ID              shift and go to state 26
+
+    ids                            shift and go to state 25
+
+state 13
+
+    (4) declaraciones -> VAR_PALRES constantes .
+
+    SEMICOLON       reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+    VAR_PALRES      reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+    WRITE_PALRES    reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+    PROMPT_PALRES   reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+    ID              reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+    $end            reduce using rule 4 (declaraciones -> VAR_PALRES constantes .)
+
+
+state 14
+
+    (13) constantes -> BOOL_PALRES . ids
+    (14) ids -> . ID COMA ids
+    (15) ids -> . ID
+
+    ID              shift and go to state 27
+
+    ids                            shift and go to state 28
+
+state 15
+
+    (8) declaraciones -> ID AOLOGIC . ID
+
+    ID              shift and go to state 29
+
+
+state 16
+
+    (7) declaraciones -> ID ASSIGNATION . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 30
+
+state 17
+
+    (2) sentencias -> sentencias SEMICOLON declaraciones .
+
+    SEMICOLON       reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+    VAR_PALRES      reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+    WRITE_PALRES    reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+    PROMPT_PALRES   reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+    ID              reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+    $end            reduce using rule 2 (sentencias -> sentencias SEMICOLON declaraciones .)
+
+
+state 18
+
+    (6) declaraciones -> PROMPT_PALRES PARL ID . PARR
+
+    PARR            shift and go to state 31
+
+
+state 19
+
+    (5) declaraciones -> WRITE_PALRES PARL expresiones . PARR
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PARR            shift and go to state 35
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 32
+    MOD             shift and go to state 37
+
+
+state 20
+
+    (22) expresiones -> NUMBER .
+
+    PLUS            reduce using rule 22 (expresiones -> NUMBER .)
+    MINUS           reduce using rule 22 (expresiones -> NUMBER .)
+    TIMES           reduce using rule 22 (expresiones -> NUMBER .)
+    DIVIDE          reduce using rule 22 (expresiones -> NUMBER .)
+    MOD             reduce using rule 22 (expresiones -> NUMBER .)
+    PARR            reduce using rule 22 (expresiones -> NUMBER .)
+    SEMICOLON       reduce using rule 22 (expresiones -> NUMBER .)
+    VAR_PALRES      reduce using rule 22 (expresiones -> NUMBER .)
+    WRITE_PALRES    reduce using rule 22 (expresiones -> NUMBER .)
+    PROMPT_PALRES   reduce using rule 22 (expresiones -> NUMBER .)
+    ID              reduce using rule 22 (expresiones -> NUMBER .)
+    $end            reduce using rule 22 (expresiones -> NUMBER .)
+
+
+state 21
+
+    (23) expresiones -> ID .
+
+    PLUS            reduce using rule 23 (expresiones -> ID .)
+    MINUS           reduce using rule 23 (expresiones -> ID .)
+    TIMES           reduce using rule 23 (expresiones -> ID .)
+    DIVIDE          reduce using rule 23 (expresiones -> ID .)
+    MOD             reduce using rule 23 (expresiones -> ID .)
+    PARR            reduce using rule 23 (expresiones -> ID .)
+    SEMICOLON       reduce using rule 23 (expresiones -> ID .)
+    VAR_PALRES      reduce using rule 23 (expresiones -> ID .)
+    WRITE_PALRES    reduce using rule 23 (expresiones -> ID .)
+    PROMPT_PALRES   reduce using rule 23 (expresiones -> ID .)
+    ID              reduce using rule 23 (expresiones -> ID .)
+    $end            reduce using rule 23 (expresiones -> ID .)
+
+
+state 22
+
+    (21) expresiones -> STRINGS .
+
+    PLUS            reduce using rule 21 (expresiones -> STRINGS .)
+    MINUS           reduce using rule 21 (expresiones -> STRINGS .)
+    TIMES           reduce using rule 21 (expresiones -> STRINGS .)
+    DIVIDE          reduce using rule 21 (expresiones -> STRINGS .)
+    MOD             reduce using rule 21 (expresiones -> STRINGS .)
+    PARR            reduce using rule 21 (expresiones -> STRINGS .)
+    SEMICOLON       reduce using rule 21 (expresiones -> STRINGS .)
+    VAR_PALRES      reduce using rule 21 (expresiones -> STRINGS .)
+    WRITE_PALRES    reduce using rule 21 (expresiones -> STRINGS .)
+    PROMPT_PALRES   reduce using rule 21 (expresiones -> STRINGS .)
+    ID              reduce using rule 21 (expresiones -> STRINGS .)
+    $end            reduce using rule 21 (expresiones -> STRINGS .)
+
+
+state 23
+
+    (11) constantes -> INT_PALRES ids .
+
+    SEMICOLON       reduce using rule 11 (constantes -> INT_PALRES ids .)
+    VAR_PALRES      reduce using rule 11 (constantes -> INT_PALRES ids .)
+    WRITE_PALRES    reduce using rule 11 (constantes -> INT_PALRES ids .)
+    PROMPT_PALRES   reduce using rule 11 (constantes -> INT_PALRES ids .)
+    ID              reduce using rule 11 (constantes -> INT_PALRES ids .)
+    $end            reduce using rule 11 (constantes -> INT_PALRES ids .)
+
+
+state 24
+
+    (12) constantes -> INT_PALRES ID . ASSIGNATION NUMBER
+    (14) ids -> ID . COMA ids
+    (15) ids -> ID .
+
+    ASSIGNATION     shift and go to state 38
+    COMA            shift and go to state 39
+    SEMICOLON       reduce using rule 15 (ids -> ID .)
+    VAR_PALRES      reduce using rule 15 (ids -> ID .)
+    WRITE_PALRES    reduce using rule 15 (ids -> ID .)
+    PROMPT_PALRES   reduce using rule 15 (ids -> ID .)
+    ID              reduce using rule 15 (ids -> ID .)
+    $end            reduce using rule 15 (ids -> ID .)
+
+
+state 25
+
+    (9) constantes -> CHARS_PALRES ids .
+
+    SEMICOLON       reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+    VAR_PALRES      reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+    WRITE_PALRES    reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+    PROMPT_PALRES   reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+    ID              reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+    $end            reduce using rule 9 (constantes -> CHARS_PALRES ids .)
+
+
+state 26
+
+    (10) constantes -> CHARS_PALRES ID . ASSIGNATION STRINGS
+    (14) ids -> ID . COMA ids
+    (15) ids -> ID .
+
+    ASSIGNATION     shift and go to state 40
+    COMA            shift and go to state 39
+    SEMICOLON       reduce using rule 15 (ids -> ID .)
+    VAR_PALRES      reduce using rule 15 (ids -> ID .)
+    WRITE_PALRES    reduce using rule 15 (ids -> ID .)
+    PROMPT_PALRES   reduce using rule 15 (ids -> ID .)
+    ID              reduce using rule 15 (ids -> ID .)
+    $end            reduce using rule 15 (ids -> ID .)
+
+
+state 27
+
+    (14) ids -> ID . COMA ids
+    (15) ids -> ID .
+
+    COMA            shift and go to state 39
+    SEMICOLON       reduce using rule 15 (ids -> ID .)
+    VAR_PALRES      reduce using rule 15 (ids -> ID .)
+    WRITE_PALRES    reduce using rule 15 (ids -> ID .)
+    PROMPT_PALRES   reduce using rule 15 (ids -> ID .)
+    ID              reduce using rule 15 (ids -> ID .)
+    $end            reduce using rule 15 (ids -> ID .)
+
+
+state 28
+
+    (13) constantes -> BOOL_PALRES ids .
+
+    SEMICOLON       reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+    VAR_PALRES      reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+    WRITE_PALRES    reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+    PROMPT_PALRES   reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+    ID              reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+    $end            reduce using rule 13 (constantes -> BOOL_PALRES ids .)
+
+
+state 29
+
+    (8) declaraciones -> ID AOLOGIC ID .
+
+    SEMICOLON       reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+    VAR_PALRES      reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+    WRITE_PALRES    reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+    PROMPT_PALRES   reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+    ID              reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+    $end            reduce using rule 8 (declaraciones -> ID AOLOGIC ID .)
+
+
+state 30
+
+    (7) declaraciones -> ID ASSIGNATION expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    SEMICOLON       reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    VAR_PALRES      reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    WRITE_PALRES    reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    PROMPT_PALRES   reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    ID              reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    $end            reduce using rule 7 (declaraciones -> ID ASSIGNATION expresiones .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 32
+    MOD             shift and go to state 37
+
+
+state 31
+
+    (6) declaraciones -> PROMPT_PALRES PARL ID PARR .
+
+    SEMICOLON       reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+    VAR_PALRES      reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+    WRITE_PALRES    reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+    PROMPT_PALRES   reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+    ID              reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+    $end            reduce using rule 6 (declaraciones -> PROMPT_PALRES PARL ID PARR .)
+
+
+state 32
+
+    (19) expresiones -> expresiones DIVIDE . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 41
+
+state 33
+
+    (18) expresiones -> expresiones TIMES . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 42
+
+state 34
+
+    (16) expresiones -> expresiones PLUS . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 43
+
+state 35
+
+    (5) declaraciones -> WRITE_PALRES PARL expresiones PARR .
+
+    SEMICOLON       reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+    VAR_PALRES      reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+    WRITE_PALRES    reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+    PROMPT_PALRES   reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+    ID              reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+    $end            reduce using rule 5 (declaraciones -> WRITE_PALRES PARL expresiones PARR .)
+
+
+state 36
+
+    (17) expresiones -> expresiones MINUS . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 44
+
+state 37
+
+    (20) expresiones -> expresiones MOD . expresiones
+    (16) expresiones -> . expresiones PLUS expresiones
+    (17) expresiones -> . expresiones MINUS expresiones
+    (18) expresiones -> . expresiones TIMES expresiones
+    (19) expresiones -> . expresiones DIVIDE expresiones
+    (20) expresiones -> . expresiones MOD expresiones
+    (21) expresiones -> . STRINGS
+    (22) expresiones -> . NUMBER
+    (23) expresiones -> . ID
+
+    STRINGS         shift and go to state 22
+    NUMBER          shift and go to state 20
+    ID              shift and go to state 21
+
+    expresiones                    shift and go to state 45
+
+state 38
+
+    (12) constantes -> INT_PALRES ID ASSIGNATION . NUMBER
+
+    NUMBER          shift and go to state 46
+
+
+state 39
+
+    (14) ids -> ID COMA . ids
+    (14) ids -> . ID COMA ids
+    (15) ids -> . ID
+
+    ID              shift and go to state 27
+
+    ids                            shift and go to state 47
+
+state 40
+
+    (10) constantes -> CHARS_PALRES ID ASSIGNATION . STRINGS
+
+    STRINGS         shift and go to state 48
+
+
+state 41
+
+    (19) expresiones -> expresiones DIVIDE expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PLUS            reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    MINUS           reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    TIMES           reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    DIVIDE          reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    MOD             reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    PARR            reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    SEMICOLON       reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    VAR_PALRES      reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    WRITE_PALRES    reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    PROMPT_PALRES   reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    ID              reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+    $end            reduce using rule 19 (expresiones -> expresiones DIVIDE expresiones .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 37 ]
+
+
+state 42
+
+    (18) expresiones -> expresiones TIMES expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PLUS            reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    MINUS           reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    TIMES           reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    DIVIDE          reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    MOD             reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    PARR            reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    SEMICOLON       reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    VAR_PALRES      reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    WRITE_PALRES    reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    PROMPT_PALRES   reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    ID              reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+    $end            reduce using rule 18 (expresiones -> expresiones TIMES expresiones .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 37 ]
+
+
+state 43
+
+    (16) expresiones -> expresiones PLUS expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PLUS            reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    MINUS           reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    PARR            reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    SEMICOLON       reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    VAR_PALRES      reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    WRITE_PALRES    reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    PROMPT_PALRES   reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    ID              reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    $end            reduce using rule 16 (expresiones -> expresiones PLUS expresiones .)
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 32
+    MOD             shift and go to state 37
+
+  ! TIMES           [ reduce using rule 16 (expresiones -> expresiones PLUS expresiones .) ]
+  ! DIVIDE          [ reduce using rule 16 (expresiones -> expresiones PLUS expresiones .) ]
+  ! MOD             [ reduce using rule 16 (expresiones -> expresiones PLUS expresiones .) ]
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+
+
+state 44
+
+    (17) expresiones -> expresiones MINUS expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PLUS            reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    MINUS           reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    PARR            reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    SEMICOLON       reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    VAR_PALRES      reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    WRITE_PALRES    reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    PROMPT_PALRES   reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    ID              reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    $end            reduce using rule 17 (expresiones -> expresiones MINUS expresiones .)
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 32
+    MOD             shift and go to state 37
+
+  ! TIMES           [ reduce using rule 17 (expresiones -> expresiones MINUS expresiones .) ]
+  ! DIVIDE          [ reduce using rule 17 (expresiones -> expresiones MINUS expresiones .) ]
+  ! MOD             [ reduce using rule 17 (expresiones -> expresiones MINUS expresiones .) ]
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+
+
+state 45
+
+    (20) expresiones -> expresiones MOD expresiones .
+    (16) expresiones -> expresiones . PLUS expresiones
+    (17) expresiones -> expresiones . MINUS expresiones
+    (18) expresiones -> expresiones . TIMES expresiones
+    (19) expresiones -> expresiones . DIVIDE expresiones
+    (20) expresiones -> expresiones . MOD expresiones
+
+    PLUS            reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    MINUS           reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    TIMES           reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    DIVIDE          reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    MOD             reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    PARR            reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    SEMICOLON       reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    VAR_PALRES      reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    WRITE_PALRES    reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    PROMPT_PALRES   reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    ID              reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+    $end            reduce using rule 20 (expresiones -> expresiones MOD expresiones .)
+
+  ! PLUS            [ shift and go to state 34 ]
+  ! MINUS           [ shift and go to state 36 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 32 ]
+  ! MOD             [ shift and go to state 37 ]
+
+
+state 46
+
+    (12) constantes -> INT_PALRES ID ASSIGNATION NUMBER .
+
+    SEMICOLON       reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+    VAR_PALRES      reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+    WRITE_PALRES    reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+    PROMPT_PALRES   reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+    ID              reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+    $end            reduce using rule 12 (constantes -> INT_PALRES ID ASSIGNATION NUMBER .)
+
+
+state 47
+
+    (14) ids -> ID COMA ids .
+
+    SEMICOLON       reduce using rule 14 (ids -> ID COMA ids .)
+    VAR_PALRES      reduce using rule 14 (ids -> ID COMA ids .)
+    WRITE_PALRES    reduce using rule 14 (ids -> ID COMA ids .)
+    PROMPT_PALRES   reduce using rule 14 (ids -> ID COMA ids .)
+    ID              reduce using rule 14 (ids -> ID COMA ids .)
+    $end            reduce using rule 14 (ids -> ID COMA ids .)
+
+
+state 48
+
+    (10) constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .
+
+    SEMICOLON       reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+    VAR_PALRES      reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+    WRITE_PALRES    reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+    PROMPT_PALRES   reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+    ID              reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+    $end            reduce using rule 10 (constantes -> CHARS_PALRES ID ASSIGNATION STRINGS .)
+

@@ -19,7 +19,8 @@ from Error import Error
 lex.lex(AnLexico) 
 
 # Creamos el fichero de tokens
-ftok = open("tokens.txt","w+") 
+ftok = open("tokens.txt","w+")
+
 
 # Abrimos el .js, leemos y analizamos
 fich = open(sys.argv[1],"r")
@@ -36,14 +37,14 @@ while 1 :
 
 
 parser = yacc.yacc()
-#parser.parse(datos)
-while 1:
-	try:
-		s = raw_input('enter > ')
-	except EOFError:
-		break
-	if not s: continue
-   	yacc.parse(s)
+parser.parse(datos)
+# while 1:
+# 	try:
+# 		s = raw_input('enter > ')
+# 	except EOFError:
+# 		break
+# 	if not s: continue
+#    	yacc.parse(s)
 
 # Cerramos el fichero tokens.txt
 ftok.close()
