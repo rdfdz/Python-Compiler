@@ -110,10 +110,9 @@ def t_error(t):
     t.lexer.skip(1)
  
 
-
 lex.lex()
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     f = open(sys.argv[1],'r')
     datos = f.read()
     f.close()
@@ -123,8 +122,7 @@ if __name__ == "__main__":
  
     while 1 :
     	token = lex.token()
-    	if not token:
-        	break
+    	if not token: break
     	ftok.write(" < " + token.type +" , " + str(token.value) + " > \n")
 
     ftok.close()
