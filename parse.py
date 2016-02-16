@@ -1,5 +1,6 @@
-import ply.yacc as yacc
 from lexer import tokens
+from AST import addToClass
+import ply.yacc as yacc
 import sys
 import AST
 
@@ -56,7 +57,6 @@ def p_funcion_sin_tipo(p):
     p[0] = AST.Funcion([AST.TokenNode(p[2]), p[4], p[7]])
     parse.write("7 ")
 
-
 def p_argv(p):
     '''argv : argv_rec
             | '''
@@ -66,7 +66,6 @@ def p_argv(p):
     else:
         p[0] = AST.Argumentos()
         parse.write("9 ")
-
 
 def p_argv_rec(p):
     '''argv_rec : tipos ID
@@ -78,7 +77,6 @@ def p_argv_rec(p):
         p[0] = AST.Argumentos([p[1], AST.TokenNode(p[2])])
         parse.write("10 ")
 
-
 def p_bloque_sin_tipo(p):
     '''bloque_sin_tipo : declaraciones bloque_sin_tipo
                        | return_dec'''
@@ -89,7 +87,6 @@ def p_bloque_sin_tipo(p):
         p[0] = p[1]
         parse.write("12 ")
 
-
 def p_bloque_tipo(p):
     '''bloque_tipo : declaraciones bloque_tipo
                    | RETURN expresiones_mul'''
@@ -99,6 +96,8 @@ def p_bloque_tipo(p):
     else:
         p[0] = AST.Return(p[2])
         parse.write("14 ")
+
+
 
 """ 2 : DECLARACIONES """
 
@@ -141,6 +140,7 @@ def p_llamada_funcion(p):
     'declaraciones : ID LPAREN idsfun RPAREN'
     p[0] = AST.CallFunNode([AST.TokenNode(p[1]), p[3]])
     parse.write("22 ")
+
 
 
 """ EXPRESIONES """
@@ -187,7 +187,6 @@ def p_tipos(p):
         parse.write("31 ")
     p[0] = AST.TokenNode(p[1])
 
-
 def p_expresiones(p):
     '''expresiones : comun
                    | comun exp2'''
@@ -202,8 +201,7 @@ def p_expresiones_string(p):
     'expresiones : STRINGS'
     p[0] = AST.TokenNode(p[1])
     parse.write("34 ")
-
-           
+   
 def p_expresiones2(p):
     '''exp2 : PLUS expresiones
             | MINUS expresiones
@@ -222,9 +220,7 @@ def p_expresiones2(p):
         parse.write("39 ")
     p[0] = AST.OpNode(p[1],p[2])
 
-
-
-def p_condiciones(p): # comun?
+def p_condiciones(p): 
     '''condiciones : comun 
                    | comun cond2'''
     if len(p) == 2:
@@ -282,7 +278,6 @@ def p_expresiones_mul_con_1(p):
     p[0] = p[1]
     parse.write("53 ")
     
-    
 def p_expresiones_mul_con_2(p):
     'expMul2 : exp2 '
     p[0] = p[1]
@@ -309,27 +304,41 @@ def p_comun_dos(p):
     parse.write("58 ")
 
 def p_error(p):
-    print("Syntax error in line %d" % p.lineno)
-    yacc.errok()
+    print("Sintantic: syntax error '%s' in line %d" % (p.value, p.lineno))
+    sys.exit()
  
 def file_parse():
     parse = open("parse.txt","w")
     parse.write("A ")
     return parse
- 
+
+@addToClass(AST.Node)
+def thread(self, lastNode):
+    for c in self.children:
+        lastNode = c.thread(lastNode)
+    lastNode.addNext(self)
+    return self
+
+def thread(tree):
+    entry=AST.EntryNode()
+    tree.thread(entry)
+    return entry
+
 
 yacc.yacc()
  
 if __name__ == "__main__":
     parse = file_parse()
     f = open(sys.argv[1], 'r')
-    prog = f.read()
+    data = f.read()
     f.close()
     
-    result = yacc.parse(prog)
+    result = yacc.parse(data)
+    entry = thread(result)
     #print(result)
- 
+    
     graph = result.makegraphicaltree()
-    graph.write_pdf('out.pdf')
+    entry.threadTree(graph) 
+    graph.write_pdf('grafo.pdf')
     result.imprimir_symTable()
     parse.close()

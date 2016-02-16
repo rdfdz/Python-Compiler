@@ -85,11 +85,13 @@ t_ignore_COMMENT = r'/\*(.|\n)*?\*/'
     
 
 
-
 def t_NUMBER(t):
     r'\d+\.?(\d+)?'
-    t.value = eval(t.value)
-    return t
+    if '.' not in t.value:
+        t.value = eval(t.value)
+        return t
+    else:
+        return t_error(t)
  
 def t_ID(t):
     r'[a-zA-z_]\w*'
@@ -106,7 +108,7 @@ def t_comment(t):
     pass
 
 def t_error(t):
-    print "Illegal character '%s' in line '%d' position" % (t.value[0], t.lineno)
+    print ("Lexical: illegal character '%s' in line '%d' position" % (t.value[0], t.lineno))
     t.lexer.skip(1)
  
 
@@ -116,13 +118,11 @@ if __name__ == "__main__":
     f = open(sys.argv[1],'r')
     datos = f.read()
     f.close()
-
     ftok = open("tokens.txt","w+")
     lex.input(datos)
- 
+    
     while 1 :
     	token = lex.token()
     	if not token: break
     	ftok.write(" < " + token.type +" , " + str(token.value) + " > \n")
-
     ftok.close()
