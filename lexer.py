@@ -84,7 +84,6 @@ t_ignore = ' \t\v'
 t_ignore_COMMENT = r'/\*(.|\n)*?\*/'
     
 
-
 def t_NUMBER(t):
     r'\d+\.?(\d+)?'
     if '.' not in t.value:

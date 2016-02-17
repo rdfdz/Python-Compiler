@@ -49,12 +49,12 @@ def p_declaraciones(p):
 
 def p_funcion_tipo(p):
     'funciones : FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK'
-    p[0] = AST.Funcion([p[2], AST.TokenNode(p[3]), p[5], p[8]])
+    p[0] = AST.Funcion([p[2],AST.TokenNode(p[3]), p[5], p[8]])
     parse.write("6 ")
 
 def p_funcion_sin_tipo(p):
     'funciones : FUNCTION ID LPAREN argv RPAREN LBLOCK bloque_sin_tipo RBLOCK'
-    p[0] = AST.Funcion([AST.TokenNode(p[2]), p[4], p[7]])
+    p[0] = AST.FuncionNType([AST.TokenNode(p[2]), p[4], p[7]])
     parse.write("7 ")
 
 def p_argv(p):
@@ -64,7 +64,7 @@ def p_argv(p):
         p[0] = p[1]
         parse.write("8 ")
     else:
-        p[0] = AST.Argumentos()
+        p[0] = AST.LambdaNode()
         parse.write("9 ")
 
 def p_argv_rec(p):
@@ -128,7 +128,7 @@ def p_for(p):
 
 def p_asignacion(p):
     'declaraciones : ID ASSIGN expresiones_mul'
-    p[0] = AST.AssignNode([AST.TokenNode(p[1]), p[3]])
+    p[0] = AST.AssignNode([AST.OpNode(p[2],[AST.TokenNode(p[1]),p[3]])]) 
     parse.write("20 ")
 
 def p_ologico(p):
@@ -172,7 +172,7 @@ def p_idsFuncionVacio(p):
         p[0] = p[1]
         parse.write("27 ")
     else:
-        p[0] = AST.IdNode()
+        p[0] = AST.LambdaNode()
         parse.write("28 ")
 
 def p_tipos(p):
@@ -285,7 +285,7 @@ def p_expresiones_mul_con_2(p):
     
 def p_expresiones_mul_con_3(p):
     'expMul2 : '
-    p[0] = AST.ExpresionesNode()
+    p[0] = AST.LambdaNode()
     parse.write("55 ")
 
 def p_condiciones3(p):
@@ -320,7 +320,7 @@ def thread(self, lastNode):
     return self
 
 def thread(tree):
-    entry=AST.EntryNode()
+    entry = AST.EntryNode()
     tree.thread(entry)
     return entry
 
@@ -339,6 +339,6 @@ if __name__ == "__main__":
     
     graph = result.makegraphicaltree()
     entry.threadTree(graph) 
-    graph.write_pdf('grafo.pdf')
+    graph.write_pdf('algoritmo.pdf')
     result.imprimir_symTable()
     parse.close()
