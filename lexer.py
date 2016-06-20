@@ -1,7 +1,6 @@
 import ply.lex as lex
 import sys
 
-
 # Palabras Reservadas de JavaScript
 reserved = (
     'var',
@@ -86,11 +85,12 @@ t_ignore_COMMENT = r'/\*(.|\n)*?\*/'
 
 def t_NUMBER(t):
     r'\d+\.?(\d+)?'
-    if '.' not in t.value:
+    if eval(t.value) <= 32767 and '.' not in t.value:
         t.value = eval(t.value)
         return t
     else:
-        return t_error(t)
+        print ("Lexical: illegal character '%s' in line '%d' position" % (t.value, t.lineno))
+        t.lexer.skip(1)
  
 def t_ID(t):
     r'[a-zA-z_]\w*'
@@ -109,10 +109,10 @@ def t_comment(t):
 def t_error(t):
     print ("Lexical: illegal character '%s' in line '%d' position" % (t.value[0], t.lineno))
     t.lexer.skip(1)
- 
 
 lex.lex()
 
+# MAIN 
 if __name__ == "__main__":
     f = open(sys.argv[1],'r')
     datos = f.read()
