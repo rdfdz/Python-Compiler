@@ -1,6 +1,6 @@
 //// Gramática del fichero de gramática
 //// Conjunto de símbolos terminales
-Terminales = { AOLOGIC ASSIGN BOOL CHARS COMA DIVIDE END_LINE EQUALS EXCLA FOR FUNCTION GREATER GREATERTHAN ID IF INT LBLOCK LESS LESSTHAN LPAREN MINUS MOD NOASSIG NUMBER OLOGIC PLUS PROMPT RBLOCK RETURN RPAREN STRINGS TIMES VAR WRITE YLOGIC lambda }
+Terminales = { AOLOGIC ASSIGN BOOL CHARS COMA DIVIDE END_LINE EQUALS EXCLA FOR FUNCTION GREATER GREATERTHAN ID IF INT LBLOCK LESS LESSTHAN LPAREN MINUS MOD NOASSIG NUMBER OLOGIC PLUS PROMPT RBLOCK RETURN RPAREN STRINGS TIMES VAR WRITE YLOGIC }
 
 //// Conjunto de símbolo no terminales
 NoTerminales = { P S argv argv_rec bloque_sin_tipo bloque_tipo comun cond2 condiciones exp2 expMul2 expresiones expresiones_mul funciones ids idsfun return_dec sentencias tipos declaraciones }
