@@ -1,0 +1,73 @@
+//// Gramática del fichero de gramática
+//// Conjunto de símbolos terminales
+Terminales = { AOLOGIC ASSIGN BOOL CHARS COMA DIVIDE END_LINE EQUALS EXCLA FOR FUNCTION GREATER GREATERTHAN ID IF INT LBLOCK LESS LESSTHAN LPAREN MINUS MOD NOASSIG NUMBER OLOGIC PLUS PROMPT RBLOCK RETURN RPAREN STRINGS TIMES VAR WRITE YLOGIC lambda }
+
+//// Conjunto de símbolo no terminales
+NoTerminales = { P S argv argv_rec bloque_sin_tipo bloque_tipo comun cond2 condiciones exp2 expMul2 expresiones expresiones_mul funciones ids idsfun return_dec sentencias tipos declaraciones }
+
+//// Axioma
+Axioma = P
+
+//// Lista de producciones
+Producciones = {
+P -> S
+S -> sentencias S
+S -> sentencias END_LINE S
+S -> sentencias
+sentencias -> funciones
+sentencias -> declaraciones
+funciones -> FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
+funciones -> FUNCTION ID LPAREN argv RPAREN LBLOCK bloque_sin_tipo RBLOCK
+argv -> argv_rec
+argv -> lambda
+argv_rec -> tipos ID
+argv_rec -> tipos ID COMA argv_rec
+bloque_sin_tipo -> declaraciones bloque_sin_tipo
+bloque_sin_tipo -> return_dec
+bloque_tipo -> declaraciones bloque_tipo
+bloque_tipo -> RETURN expresiones_mul
+declaraciones -> VAR tipos ids
+declaraciones -> WRITE LPAREN expresiones RPAREN
+declaraciones -> PROMPT LPAREN ID RPAREN
+declaraciones -> IF LPAREN condiciones RPAREN return_dec
+declaraciones -> FOR LPAREN ID ASSIGN comun END_LINE condiciones END_LINE ID ASSIGN expresiones RPAREN LBLOCK bloque_sin_tipo RBLOCK
+declaraciones -> ID ASSIGN expresiones_mul
+declaraciones -> ID AOLOGIC ID
+declaraciones -> ID LPAREN idsfun RPAREN
+return_dec -> declaraciones
+return_dec -> RETURN
+ids -> ID COMA ids
+ids -> ID
+idsfun -> ids
+idsfun -> lambda
+tipos -> INT
+tipos -> CHARS
+tipos -> BOOL
+expresiones -> comun
+expresiones -> comun exp2
+expresiones -> STRINGS
+exp2 -> PLUS expresiones
+exp2 -> MINUS expresiones
+exp2 -> TIMES expresiones
+exp2 -> DIVIDE expresiones
+exp2 -> MOD expresiones
+condiciones -> comun
+condiciones -> comun cond2
+condiciones -> EXCLA comun
+cond2 -> GREATERTHAN condiciones
+cond2 -> LESSTHAN condiciones
+cond2 -> EQUALS condiciones
+cond2 -> NOASSIG condiciones
+cond2 -> LESS condiciones
+cond2 -> GREATER condiciones
+cond2 -> OLOGIC condiciones
+cond2 -> YLOGIC condiciones
+expresiones_mul -> EXCLA comun
+expresiones_mul -> comun expMul2
+expMul2 -> cond2
+expMul2 -> exp2
+expMul2 -> lambda
+expresiones_mul -> STRINGS
+comun -> NUMBER
+comun -> ID
+}
