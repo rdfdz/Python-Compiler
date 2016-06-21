@@ -20,8 +20,8 @@ funciones -> FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
 funciones -> FUNCTION ID LPAREN argv RPAREN LBLOCK bloque_sin_tipo RBLOCK
 argv -> argv_rec
 argv -> lambda
-argv_rec -> tipos ID
 argv_rec -> tipos ID COMA argv_rec
+argv_rec -> tipos ID
 bloque_sin_tipo -> declaraciones bloque_sin_tipo
 bloque_sin_tipo -> return_dec
 bloque_tipo -> declaraciones bloque_tipo

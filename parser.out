@@ -3,17 +3,17 @@ Created by PLY version 3.4 (http://www.dabeaz.com/ply)
 Grammar
 
 Rule 0     S' -> S
-Rule 1     S -> sentencias
-Rule 2     S -> sentencias S
-Rule 3     S -> sentencias END_LINE S
+Rule 1     S -> sentencias S
+Rule 2     S -> sentencias END_LINE S
+Rule 3     S -> sentencias
 Rule 4     sentencias -> funciones
 Rule 5     sentencias -> declaraciones
 Rule 6     funciones -> FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
 Rule 7     funciones -> FUNCTION ID LPAREN argv RPAREN LBLOCK bloque_sin_tipo RBLOCK
 Rule 8     argv -> argv_rec
 Rule 9     argv -> <empty>
-Rule 10    argv_rec -> tipos ID
-Rule 11    argv_rec -> tipos ID COMA argv_rec
+Rule 10    argv_rec -> tipos ID COMA argv_rec
+Rule 11    argv_rec -> tipos ID
 Rule 12    bloque_sin_tipo -> declaraciones bloque_sin_tipo
 Rule 13    bloque_sin_tipo -> return_dec
 Rule 14    bloque_tipo -> declaraciones bloque_tipo
@@ -69,9 +69,9 @@ AOLOGIC              : 22
 ASSIGN               : 20 20 21
 BOOL                 : 32
 CHARS                : 31
-COMA                 : 11 26
+COMA                 : 10 26
 DIVIDE               : 39
-END_LINE             : 3 20 20
+END_LINE             : 2 20 20
 EQUALS               : 46
 EXCLA                : 43 52
 FOR                  : 20
@@ -104,9 +104,9 @@ error                :
 
 Nonterminals, with rules where they appear
 
-S                    : 2 3 0
+S                    : 1 2 0
 argv                 : 6 7
-argv_rec             : 8 11
+argv_rec             : 8 10
 bloque_sin_tipo      : 7 12 20
 bloque_tipo          : 6 14
 comun                : 20 33 34 41 42 43 52 53
@@ -129,9 +129,9 @@ Parsing method: LALR
 state 0
 
     (0) S' -> . S
-    (1) S -> . sentencias
-    (2) S -> . sentencias S
-    (3) S -> . sentencias END_LINE S
+    (1) S -> . sentencias S
+    (2) S -> . sentencias END_LINE S
+    (3) S -> . sentencias
     (4) sentencias -> . funciones
     (5) sentencias -> . declaraciones
     (6) funciones -> . FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
@@ -160,12 +160,12 @@ state 0
 
 state 1
 
-    (1) S -> sentencias .
-    (2) S -> sentencias . S
-    (3) S -> sentencias . END_LINE S
-    (1) S -> . sentencias
-    (2) S -> . sentencias S
-    (3) S -> . sentencias END_LINE S
+    (1) S -> sentencias . S
+    (2) S -> sentencias . END_LINE S
+    (3) S -> sentencias .
+    (1) S -> . sentencias S
+    (2) S -> . sentencias END_LINE S
+    (3) S -> . sentencias
     (4) sentencias -> . funciones
     (5) sentencias -> . declaraciones
     (6) funciones -> . FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
@@ -179,8 +179,8 @@ state 1
     (22) declaraciones -> . ID AOLOGIC ID
     (23) declaraciones -> . ID LPAREN idsfun RPAREN
 
-    $end            reduce using rule 1 (S -> sentencias .)
     END_LINE        shift and go to state 13
+    $end            reduce using rule 3 (S -> sentencias .)
     FUNCTION        shift and go to state 4
     VAR             shift and go to state 9
     WRITE           shift and go to state 7
@@ -299,17 +299,17 @@ state 11
 
 state 12
 
-    (2) S -> sentencias S .
+    (1) S -> sentencias S .
 
-    $end            reduce using rule 2 (S -> sentencias S .)
+    $end            reduce using rule 1 (S -> sentencias S .)
 
 
 state 13
 
-    (3) S -> sentencias END_LINE . S
-    (1) S -> . sentencias
-    (2) S -> . sentencias S
-    (3) S -> . sentencias END_LINE S
+    (2) S -> sentencias END_LINE . S
+    (1) S -> . sentencias S
+    (2) S -> . sentencias END_LINE S
+    (3) S -> . sentencias
     (4) sentencias -> . funciones
     (5) sentencias -> . declaraciones
     (6) funciones -> . FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
@@ -467,9 +467,9 @@ state 26
 
 state 27
 
-    (3) S -> sentencias END_LINE S .
+    (2) S -> sentencias END_LINE S .
 
-    $end            reduce using rule 3 (S -> sentencias END_LINE S .)
+    $end            reduce using rule 2 (S -> sentencias END_LINE S .)
 
 
 state 28
@@ -484,8 +484,8 @@ state 29
     (7) funciones -> FUNCTION ID LPAREN . argv RPAREN LBLOCK bloque_sin_tipo RBLOCK
     (8) argv -> . argv_rec
     (9) argv -> .
-    (10) argv_rec -> . tipos ID
-    (11) argv_rec -> . tipos ID COMA argv_rec
+    (10) argv_rec -> . tipos ID COMA argv_rec
+    (11) argv_rec -> . tipos ID
     (30) tipos -> . INT
     (31) tipos -> . CHARS
     (32) tipos -> . BOOL
@@ -851,8 +851,8 @@ state 49
     (6) funciones -> FUNCTION tipos ID LPAREN . argv RPAREN LBLOCK bloque_tipo RBLOCK
     (8) argv -> . argv_rec
     (9) argv -> .
-    (10) argv_rec -> . tipos ID
-    (11) argv_rec -> . tipos ID COMA argv_rec
+    (10) argv_rec -> . tipos ID COMA argv_rec
+    (11) argv_rec -> . tipos ID
     (30) tipos -> . INT
     (31) tipos -> . CHARS
     (32) tipos -> . BOOL
@@ -882,8 +882,8 @@ state 51
 
 state 52
 
-    (10) argv_rec -> tipos . ID
-    (11) argv_rec -> tipos . ID COMA argv_rec
+    (10) argv_rec -> tipos . ID COMA argv_rec
+    (11) argv_rec -> tipos . ID
 
     ID              shift and go to state 81
 
@@ -1331,11 +1331,11 @@ state 80
 
 state 81
 
-    (10) argv_rec -> tipos ID .
-    (11) argv_rec -> tipos ID . COMA argv_rec
+    (10) argv_rec -> tipos ID . COMA argv_rec
+    (11) argv_rec -> tipos ID .
 
-    RPAREN          reduce using rule 10 (argv_rec -> tipos ID .)
     COMA            shift and go to state 102
+    RPAREN          reduce using rule 11 (argv_rec -> tipos ID .)
 
 
 state 82
@@ -1685,9 +1685,9 @@ state 101
 
 state 102
 
-    (11) argv_rec -> tipos ID COMA . argv_rec
-    (10) argv_rec -> . tipos ID
-    (11) argv_rec -> . tipos ID COMA argv_rec
+    (10) argv_rec -> tipos ID COMA . argv_rec
+    (10) argv_rec -> . tipos ID COMA argv_rec
+    (11) argv_rec -> . tipos ID
     (30) tipos -> . INT
     (31) tipos -> . CHARS
     (32) tipos -> . BOOL
@@ -1786,9 +1786,9 @@ state 107
 
 state 108
 
-    (11) argv_rec -> tipos ID COMA argv_rec .
+    (10) argv_rec -> tipos ID COMA argv_rec .
 
-    RPAREN          reduce using rule 11 (argv_rec -> tipos ID COMA argv_rec .)
+    RPAREN          reduce using rule 10 (argv_rec -> tipos ID COMA argv_rec .)
 
 
 state 109
