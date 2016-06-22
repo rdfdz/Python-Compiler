@@ -19,7 +19,7 @@ sentencias -> declaraciones
 funciones -> FUNCTION tipos ID LPAREN argv RPAREN LBLOCK bloque_tipo RBLOCK
 funciones -> FUNCTION ID LPAREN argv RPAREN LBLOCK bloque_sin_tipo RBLOCK
 argv -> argv_rec
-argv -> lambda
+argv -> 
 argv_rec -> tipos ID COMA argv_rec
 argv_rec -> tipos ID
 bloque_sin_tipo -> declaraciones bloque_sin_tipo
@@ -39,7 +39,7 @@ return_dec -> RETURN
 ids -> ID COMA ids
 ids -> ID
 idsfun -> ids
-idsfun -> lambda
+idsfun -> 
 tipos -> INT
 tipos -> CHARS
 tipos -> BOOL
@@ -66,7 +66,7 @@ expresiones_mul -> EXCLA comun
 expresiones_mul -> comun expMul2
 expMul2 -> cond2
 expMul2 -> exp2
-expMul2 -> lambda
+expMul2 -> 
 expresiones_mul -> STRINGS
 comun -> NUMBER
 comun -> ID

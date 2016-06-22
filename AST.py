@@ -18,8 +18,10 @@ class Node:
             self.children = [children]
         self.next = []
 
+
     def addNext(self,next):
         self.next.append(next)
+
 
     def nodeTree(self, prefix=''):
         result = "%s%s\n" % (prefix, repr(self))
@@ -31,8 +33,8 @@ class Node:
             result += c.nodeTree(prefix)
         return result
  
-    def makegraphicaltree(self, dot=None, edgeLabels=True):
 
+    def makegraphicaltree(self, dot=None, edgeLabels=True):
             if not dot: dot = pydot.Dot()
 
             dot.add_node(pydot.Node(self.ID,label=repr(self), shape=self.shape))
@@ -46,6 +48,7 @@ class Node:
                 dot.add_edge(edge)
             return dot
          
+
     def threadTree(self, graph, seen = None, col=0):
             colors = ('red', 'green', 'blue', 'yellow', 'magenta', 'cyan')
 
@@ -77,8 +80,10 @@ class Node:
                 graph.add_edge(edge)
             return graph   
 
+
     def __str__(self):
         return self.nodeTree()
+   
    
     def __repr__(self):
         return self.type

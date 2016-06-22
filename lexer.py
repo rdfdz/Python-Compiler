@@ -117,7 +117,7 @@ if __name__ == "__main__":
     f = open(sys.argv[1],'r')
     datos = f.read()
     f.close()
-    ftok = open("tokens.txt","w+")
+    ftok = open("Output/tokens.txt","w+")
     lex.input(datos)
     
     while 1 :
