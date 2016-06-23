@@ -1,0 +1,58 @@
+------------ TABLA GLOBAL ------------
+
+
+* LEXEMA : 'fun1'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 1
+
+
+    -------------------------------
+    TABLA DE LA FUNCION fun1 #1
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : var2
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'Imprime'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 2
+
+
+    -------------------------------
+    TABLA DE LA FUNCION Imprime #2
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'var2'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 6
+
+
+* LEXEMA : 'var1'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 0
+
+
+* LEXEMA : 'imprimir'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'chars'
+   + desplazamiento : 2
+
+
+
+

@@ -1,0 +1,14 @@
+------------ TABLA GLOBAL ------------
+
+* LEXEMA : 'i'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 0
+
+
+* LEXEMA : 'j'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 2
+
+

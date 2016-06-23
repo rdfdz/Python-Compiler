@@ -1,0 +1,104 @@
+------------ TABLA GLOBAL ------------
+
+
+
+
+
+
+
+* LEXEMA : 'cuatro'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 2
+       + tipo parametro1: 'int'
+       + tipo parametro2: 'int'
+   + id tabla : 4
+
+
+    -------------------------------
+    TABLA DE LA FUNCION cuatro #4
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : b
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'cinco'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 5
+
+
+    -------------------------------
+    TABLA DE LA FUNCION cinco #5
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : b
+       + tipo : 'int'
+       + desplazamiento : -2
+    -------------------------------
+
+
+* LEXEMA : 'dos'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 0
+   + id tabla : 2
+
+
+    -------------------------------
+    TABLA DE LA FUNCION dos #2
+    * LEXEMA : c
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'tres'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 1
+       + tipo parametro1: 'chars'
+   + id tabla : 3
+
+
+    -------------------------------
+    TABLA DE LA FUNCION tres #3
+    * LEXEMA : c
+       + tipo : 'chars'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'z'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 0
+
+
+* LEXEMA : 'uno'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 0
+   + id tabla : 1
+
+
+    -------------------------------
+    TABLA DE LA FUNCION uno #1
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : b
+       + tipo : 'int'
+       + desplazamiento : -2
+    -------------------------------
+
+
+
+

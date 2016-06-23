@@ -1,0 +1,44 @@
+------------ TABLA GLOBAL ------------
+
+* LEXEMA : 'a'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 0
+
+
+* LEXEMA : 'c'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 6
+
+
+* LEXEMA : 'z'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'bool'
+   + desplazamiento : 18
+
+
+* LEXEMA : 'g'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'chars'
+   + desplazamiento : 2
+
+
+* LEXEMA : 'h'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 12
+
+
+* LEXEMA : 'y'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'chars'
+   + desplazamiento : 14
+
+
+* LEXEMA : 'errrrr'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'bool'
+   + desplazamiento : 8
+
+

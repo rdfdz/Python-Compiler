@@ -1,0 +1,271 @@
+------------ TABLA GLOBAL ------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* LEXEMA : 'a'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 6
+
+
+* LEXEMA : 'imprime'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 2
+       + tipo parametro1: 'chars'
+       + tipo parametro2: 'int'
+   + id tabla : 5
+
+
+    -------------------------------
+    TABLA DE LA FUNCION imprime #5
+    * LEXEMA : msg
+       + tipo : 'chars'
+       + desplazamiento : -2
+    * LEXEMA : f
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'imprime2'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 2
+       + tipo parametro1: 'int'
+       + tipo parametro2: 'int'
+   + id tabla : 8
+
+
+    -------------------------------
+    TABLA DE LA FUNCION imprime2 #8
+    * LEXEMA : w
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : v
+       + tipo : 'int'
+       + desplazamiento : -2
+    -------------------------------
+
+
+* LEXEMA : 'FactorialWhile'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 0
+   + id tabla : 3
+
+
+    -------------------------------
+    TABLA DE LA FUNCION FactorialWhile #3
+    * LEXEMA : factorial
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : i
+       + tipo : 'int'
+       + desplazamiento : -2
+    -------------------------------
+
+
+* LEXEMA : 'demo'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 0
+   + id tabla : 10
+
+
+    -------------------------------
+    TABLA DE LA FUNCION demo #10
+    * LEXEMA : i
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : v2
+       + tipo : 'int'
+       + desplazamiento : -12
+    * LEXEMA : v0
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : v1
+       + tipo : 'int'
+       + desplazamiento : -10
+    * LEXEMA : s
+       + tipo : 'chars'
+       + desplazamiento : -4
+    * LEXEMA : v3
+       + tipo : 'int'
+       + desplazamiento : -14
+    * LEXEMA : v
+       + tipo : 'int'
+       + desplazamiento : -8
+    * LEXEMA : zv
+       + tipo : 'int'
+       + desplazamiento : -16
+    -------------------------------
+
+
+* LEXEMA : 'cadena'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'chars'
+   + numero de argumentos : 1
+       + tipo parametro1: 'bool'
+   + id tabla : 6
+
+
+    -------------------------------
+    TABLA DE LA FUNCION cadena #6
+    * LEXEMA : log
+       + tipo : 'bool'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'FactorialDo'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 2
+
+
+    -------------------------------
+    TABLA DE LA FUNCION FactorialDo #2
+    * LEXEMA : factorial
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : n
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 's'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'chars'
+   + desplazamiento : 0
+
+
+* LEXEMA : 'num'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 4
+
+
+* LEXEMA : 'potencia'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : void
+   + numero de argumentos : 2
+       + tipo parametro1: 'int'
+       + tipo parametro2: 'int'
+   + id tabla : 9
+
+
+    -------------------------------
+    TABLA DE LA FUNCION potencia #9
+    * LEXEMA : dim
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : s
+       + tipo : 'int'
+       + desplazamiento : -4
+    * LEXEMA : z
+       + tipo : 'int'
+       + desplazamiento : -2
+    -------------------------------
+
+
+* LEXEMA : 'ids
+For
+ids
+Do
+While'
+  ATRIBUTOS:
+   + (esto es una variable) tipo : 'int'
+   + desplazamiento : 8
+
+
+* LEXEMA : 'esFechaCorrecta'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'bool'
+   + numero de argumentos : 3
+       + tipo parametro1: 'int'
+       + tipo parametro2: 'int'
+       + tipo parametro3: 'int'
+   + id tabla : 7
+
+
+    -------------------------------
+    TABLA DE LA FUNCION esFechaCorrecta #7
+    * LEXEMA : a
+       + tipo : 'int'
+       + desplazamiento : 0
+    * LEXEMA : m
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : d
+       + tipo : 'int'
+       + desplazamiento : -4
+    -------------------------------
+
+
+* LEXEMA : 'FactorialFor'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 4
+
+
+    -------------------------------
+    TABLA DE LA FUNCION FactorialFor #4
+    * LEXEMA : i
+       + tipo : 'int'
+       + desplazamiento : -2
+    * LEXEMA : factorial
+       + tipo : 'int'
+       + desplazamiento : -4
+    * LEXEMA : n
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+* LEXEMA : 'FactorialRecursivo'
+  ATRIBUTOS:
+   + (esto es una funcion) tipo : 'int'
+   + numero de argumentos : 1
+       + tipo parametro1: 'int'
+   + id tabla : 1
+
+
+    -------------------------------
+    TABLA DE LA FUNCION FactorialRecursivo #1
+    * LEXEMA : n
+       + tipo : 'int'
+       + desplazamiento : 0
+    -------------------------------
+
+
+
+
+
+
